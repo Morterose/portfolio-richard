@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% apply inline_css(source("./main.css")) %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Richard Tserr{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+</head>
+<body>
+    {% block body %}
+    <div id="app"></div>
+    {% endblock %}
+    <script src="{{ asset('build/app.js') }}"></script>
+    {% for entry in encore_entry_js_files('app') %}
+        <script src="{{ asset(entry) }}"></script>
+    {% endfor %}
+</body>
+</html>
+{% endapply %}
+
+{# <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Моё приложение{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+</head>
+<body>
+    <div id="app"></div>
+    <script src="{{ asset('build/app.js') }}"></script>
+</body>
+</html> #}
